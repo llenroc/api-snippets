@@ -8,7 +8,7 @@ module LanguageHandler
       dirs = ['./venv/*', './guides/*', './testable_snippets/*']
       exclude = dirs.map{|dir| "--exclude='#{dir}'"}
       Dir.chdir(directory) do
-        output = `yapf #{exclude.join(' ')} -i -r . && flake8`
+        output = `flake8 && yapf #{exclude.join(' ')} -i -r .`
         if $? != 0
           abort(output)
         end
